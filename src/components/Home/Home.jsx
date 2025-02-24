@@ -82,7 +82,7 @@ const Home = () => {
   };
 
   const handleNewBusinessClick = () => {
-    checkProfileData("newBusinessUser");
+    checkProfileData("/NewBusiness");
   };
 
   return (
