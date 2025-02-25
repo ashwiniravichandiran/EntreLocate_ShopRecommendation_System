@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { db } from 'D:\\react\\busi_project\\src\\firebaseConfig';
+import { db } from 'D:\\ashu_programs\\React\\Entrelocate\\src\\firebaseConfig';
 import { doc, setDoc, getDocs,getDoc, collection, query, where } from 'firebase/firestore';
 
 

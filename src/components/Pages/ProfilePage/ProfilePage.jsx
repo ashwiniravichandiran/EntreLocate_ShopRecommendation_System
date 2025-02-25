@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { db, storage, auth } from "D:\\react\\busi_project\\src\\firebaseConfig";
+import { db, storage, auth } from "D:\\ashu_programs\\React\\Entrelocate\\src\\firebaseConfig";
 import { doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "./ProfilePage.css";

@@ -1,7 +1,7 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React from 'react';
-import googleLogo from 'D:\\react\\busi_project\\src\\assets\\google2.png';
-import { app } from 'D:\\react\\busi_project\\src\\components\\firebase\\firebase'; // Import app as a named export
+import googleLogo from 'D:\\ashu_programs\\React\\Entrelocate\\src\\assets\\google2.png';
+import { app } from 'D:\\ashu_programs\\React\\Entrelocate\\src\\components\\firebase\\firebase'; // Import app as a named export
 
 const auth = getAuth(app);
 

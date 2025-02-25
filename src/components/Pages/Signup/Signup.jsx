@@ -1,9 +1,9 @@
 import React, { useState } from 'react'; // Removed useEffect since it's not used
 import { useNavigate } from 'react-router-dom';
 import './Signup.css';
-import logo from 'D:\\react\\busi_project\\src\\assets\\logo.png';
-import Signinwithgoogle from 'D:\\react\\busi_project\\src\\components\\Signinwithgoogle';
-import { auth, db } from 'D:\\react\\busi_project\\src\\components\\firebase\\firebase'; // Firebase Auth and Firestore
+import logo from 'D:\\ashu_programs\\React\\Entrelocate\\src\\assets\\logo.png';
+import Signinwithgoogle from 'D:\\ashu_programs\\React\\Entrelocate\\src\\components\\Signinwithgoogle.jsx';
+import { auth, db } from 'D:\\ashu_programs\\React\\Entrelocate\\src\\components\\firebase\\firebase'; // Firebase Auth and Firestore
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'; // Firebase Auth methods
 import { doc, setDoc } from 'firebase/firestore'; // Firestore methods
 

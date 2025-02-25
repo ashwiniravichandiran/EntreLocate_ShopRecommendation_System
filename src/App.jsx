@@ -10,8 +10,8 @@ import Location_2 from './components/Pages/NewBusiness/location_2';
 import ProfilePage from './components/Pages/ProfilePage/ProfilePage';
 import ClusterDetails from './components/Pages/NewBusiness/ClusterDetails';
 import ExpenditurePage from './components/Pages/Expenditure/ExpenditurePage'; // Correct import path
+import Business2 from './components/Pages/NewBusiness/Business2';
 
-//import ExistingBusiness from './components/Pages/ExistingBusiness/ExistingBusiness';
 
 const App = () => {
   const [isHeroContentVisible, setHeroContentVisible] = useState(true);
@@ -58,7 +58,7 @@ const AppWithNavbar = ({ handleLoginClick, handleCloseLoginBox, isHeroContentVis
          <Route path="/location_2" element={<Location_2 />} />
          <Route path="/cluster-details" element={<ClusterDetails />} />
          <Route path="/expenditure" element={<ExpenditurePage />} />
-
+         <Route path = "/business2" element = {<Business2/>}/>;
       </Routes>
     
       {showLoginBox && <LoginBox onClose={handleCloseLoginBox} />}
@@ -67,3 +67,7 @@ const AppWithNavbar = ({ handleLoginClick, handleCloseLoginBox, isHeroContentVis
 };
 
 export default App;
+
+
+
+  
