@@ -1,4 +1,4 @@
-.expenditure-container {
+/* .expenditure-container {
     padding: 20px;
     font-family: Arial, sans-serif;
   }
@@ -66,4 +66,78 @@
     max-width: 600px;
     margin: 0 auto;
   }
+   */
+
+   /* Additional styles for Expenditure Page */
+.expenditure-content {
+  width: 100%;
+  display: flex;
+  transition: all 0.5s ease;
+}
+
+.expenditure-form {
+  width: 100%;
+  transition: all 0.5s ease;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.expenditure-form.shifted {
+  width: 45%;
+  margin-right: 20px;
+}
+
+.results-section {
+  flex: 1;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.calculate-btn {
+  margin-top: 15px;
+  padding: 12px 20px;
+  background-color: #143362;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.calculate-btn:hover {
+  background-color: #1d4580;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+  .expenditure-content {
+    flex-direction: column;
+  }
   
+  .expenditure-form.shifted {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}

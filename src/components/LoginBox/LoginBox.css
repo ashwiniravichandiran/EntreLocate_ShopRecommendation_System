@@ -143,7 +143,7 @@ h1 {
 }
 
 .input-box input {
-  width: 100%;
+  width: 84%;
   padding: 12px; /* Increased padding inside input */
   padding-left: 50px; /* More space for the icon */
   border: 1px solid #ccc;
@@ -162,11 +162,14 @@ h1 {
   font-size: 18px; /* Slightly larger icon */
 }
 
-.remember-forgot {
+.remember-forgot{
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px; /* Increased space before the button */
   font-size: 14px;
+}
+.remember-forgot a{
+  color: #fff;
 }
 
 button[type="submit"] {

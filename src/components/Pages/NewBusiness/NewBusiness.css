@@ -3,7 +3,7 @@
   text-align: center;
   padding: 3cm;
   background-color: #2d2d2d;
-  background-image: url('D:\\ashu_programs\\React\\Entrelocate\\src\\assets\\back3-2.png');
+  background-image: url('C:\\Users\\balas\\Documents\\EntreLocate\\entreloc\\src\\assets\\back3-2.png');
   background-repeat: no-repeat; /* Prevents the background from repeating */
   background-size: contain; /* Ensures the background image covers the entire section */
   background-position: right; /* Centers the background image */
@@ -111,7 +111,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   position: relative;
   height:15cm;
-  background-image: url('D:\\ashu_programs\\React\\Entrelocate\\src\\assets\\popup-back.png');
+  background-image: url('C:\\Users\\balas\\Documents\\EntreLocate\\entreloc\\src\\assets\\popup-back.png');
   background-position: right;
   background-size:contain;
   background-repeat: no-repeat;

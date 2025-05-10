@@ -11,6 +11,7 @@ import ProfilePage from './components/Pages/ProfilePage/ProfilePage';
 import ClusterDetails from './components/Pages/NewBusiness/ClusterDetails';
 import ExpenditurePage from './components/Pages/Expenditure/ExpenditurePage'; // Correct import path
 import Business2 from './components/Pages/NewBusiness/Business2';
+import Mainpage from './components/Mainpage/Mainpage';
 
 
 const App = () => {
@@ -59,6 +60,8 @@ const AppWithNavbar = ({ handleLoginClick, handleCloseLoginBox, isHeroContentVis
          <Route path="/cluster-details" element={<ClusterDetails />} />
          <Route path="/expenditure" element={<ExpenditurePage />} />
          <Route path = "/business2" element = {<Business2/>}/>;
+         <Route path = "/Mainpage" element = {<Mainpage/>}/>;
+
       </Routes>
     
       {showLoginBox && <LoginBox onClose={handleCloseLoginBox} />}

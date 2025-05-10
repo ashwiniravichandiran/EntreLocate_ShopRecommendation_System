@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './NewBusiness.css'; // Ensure CSS is updated as per design
-import logo from 'D:\\ashu_programs\\React\\Entrelocate\\src\\assets\\logo.png';
-import img1 from 'D:\\ashu_programs\\React\\Entrelocate\\src\\assets\\hero.png';
-import img2 from 'D:\\ashu_programs\\React\\Entrelocate\\src\\assets\\illus-1.png';
+import logo from 'C:\\Users\\balas\\Documents\\EntreLocate\\entreloc\\src\\assets\\logo.png';
+import img1 from 'C:\\Users\\balas\\Documents\\EntreLocate\\entreloc\\src\\assets\\hero.png';
+import img2 from 'C:\\Users\\balas\\Documents\\EntreLocate\\entreloc\\src\\assets\\illus-1.png';
 
 const NewBusiness = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);

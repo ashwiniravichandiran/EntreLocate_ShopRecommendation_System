@@ -20,25 +20,27 @@ const Location_2 = () => {
         <>
           {results.recommended_clusters && results.recommended_clusters.length > 0 ? (
             <>
-              {results.recommended_clusters.map((clusterInfo, index) => (
-                <div
-                  key={index}
-                  className="cluster-card"
-                  onClick={() => handleCardClick(clusterInfo)}
-                >
-                  <h3>Cluster {clusterInfo.cluster}</h3>
-                  <h4>Recommended Neighborhoods:</h4>
-                  {clusterInfo.neighborhood_areas && clusterInfo.neighborhood_areas.length > 0 ? (
-                    <ul>
-                      {clusterInfo.neighborhood_areas.map((neighborhood, i) => (
-                        <li key={i}>{neighborhood}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p>No neighborhoods found for this cluster.</p>
-                  )}
-                </div>
-              ))}
+{results.recommended_clusters.map((clusterInfo, index) => (
+  <div
+    key={index}
+    className={`cluster-card ${index % 2 === 0 ? "left-slide" : "right-slide"}`}
+    onClick={() => handleCardClick(clusterInfo)}
+  >
+    <h3>Cluster {clusterInfo.cluster}</h3>
+    <h4>Recommended Neighborhoods:</h4>
+    {clusterInfo.neighborhood_areas && clusterInfo.neighborhood_areas.length > 0 ? (
+      <ul>
+        {clusterInfo.neighborhood_areas.map((neighborhood, i) => (
+          <li key={i}>{neighborhood}</li>
+        ))}
+      </ul>
+    ) : (
+      <p>No neighborhoods found for this cluster.</p>
+    )}
+  </div>
+))}
+
+             
             </>
           ) : (
             <p>No cluster recommendations found.</p>

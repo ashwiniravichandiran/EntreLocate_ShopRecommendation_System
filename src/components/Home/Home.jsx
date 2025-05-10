@@ -1,246 +1,51 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { doc, collection, getDoc, setDoc } from "firebase/firestore";
-import { auth, db } from "D:\\ashu_programs\\React\\Entrelocate\\src\\firebaseConfig";
-import "./Home.css";
+import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+import { auth, db } from "C:\\Users\\balas\\Documents\\EntreLocate\\entreloc\\src\\firebaseConfig";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import logo from "../../assets/logo.png";
-
-// const Home = () => {
-//   const [showPopup, setShowPopup] = useState(false);
-//   const [shopCategory, setShopCategory] = useState("");
-//   const [ownerName, setOwnerName] = useState("");
-//   const [shopAddress, setShopAddress] = useState("");
-//   const [subcollection, setSubcollection] = useState(""); // To track the selected subcollection
-//   const navigate = useNavigate();
-
-//   // Check if the user already has profile data in the selected subcollection
-//   const checkProfileData = async (subcollectionName) => {
-//     const user = auth.currentUser;
-
-//     if (user) {
-//       const subcollectionRef = doc(
-//         db,
-//         "users",
-//         user.email,
-//         subcollectionName,
-//         "profile" // Using "profile" as a placeholder document ID
-//       );
-
-//       try {
-//         const docSnap = await getDoc(subcollectionRef);
-
-//         if (docSnap.exists()) {
-//           // User already has profile data in this subcollection, navigate to ProfilePage
-//           const userData = docSnap.data();
-//           navigate("/ProfilePage", { state: userData });
-//         } else {
-//           // No profile data, show the popup
-//           setSubcollection(subcollectionName);
-//           setShowPopup(true);
-//         }
-//       } catch (error) {
-//         console.error("Error fetching data:", error);
-//         setShowPopup(true); // In case of error, show the popup
-//       }
-//     } else {
-//       console.log("No user is logged in.");
-//     }
-//   };
-
-//   // Handle form submission for the first-time profile data
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const user = auth.currentUser;
-
-//     if (user && subcollection) {
-//       const subcollectionRef = doc(
-//         db,
-//         "users",
-//         user.email,
-//         subcollection,
-//         "profile" // Using "profile" as the document ID within the subcollection
-//       );
-
-//       const data = { shopCategory, ownerName, shopAddress };
-
-//       try {
-//         // Save the data to Firestore under the selected subcollection
-//         await setDoc(subcollectionRef, data);
-//         alert("Details saved successfully!");
-//         navigate("/ProfilePage", { state: data }); // Navigate to the profile page
-//       } catch (error) {
-//         console.error("Error saving data:", error);
-//         alert("Failed to save details.");
-//       }
-//     } else {
-//       console.log("No user is logged in or subcollection is not selected.");
-//     }
-//   };
-
-//   const handleExistingBusinessClick = () => {
-//     checkProfileData("existingBusinessUser");
-//   };
-
-//   const handleNewBusinessClick = () => {
-//     checkProfileData("/NewBusiness");
-//   };
-
-//   return (
-//     <div className="Ques1-container">
-//       <nav className="containerhome">
-//         <img src={logo} alt="Logo" className="logo" />
-//         <ul>
-//           <li>Home</li>
-//           <li>Overview</li>
-//           <li>Profile</li>
-//         </ul>
-//       </nav>
-//       <div className="left-side"></div>
-//       <div className="right-side">
-//         <div className="right-content">
-//           <h2>Select one of the below to let us know why you are here:</h2>
-//         </div>
-//         <div className="choice-btn-container">
-//           <button
-//             className="choice-btn"
-//             onClick={handleNewBusinessClick} // Navigate to new business subcollection
-//           >
-//             I am a new Business owner and I am here looking for guidance
-//           </button>
-//           <button
-//             className="choice-btn"
-//             onClick={handleExistingBusinessClick} // Navigate to existing business subcollection
-//           >
-//             I am here to improve my existing business with different ideas
-//           </button>
-//         </div>
-//       </div>
-
-//       {showPopup && (
-//         <div className="popup-overlay">
-//           <div className="popup-modal">
-//             <button className="close-btn" onClick={() => setShowPopup(false)}>
-//               &times;
-//             </button>
-
-//             <form onSubmit={handleSubmit}>
-//               <h2>Shop Details</h2>
-
-//               <select
-//                 name="shop-category"
-//                 value={shopCategory}
-//                 onChange={(e) => setShopCategory(e.target.value)}
-//                 required
-//               >
-//                 <option value="" disabled>
-//                   Shop Category
-//                 </option>
-//                 <option value="grocery">Grocery</option>
-//                 <option value="clothing">Clothing</option>
-//                 <option value="electronics">Electronics</option>
-//                 <option value="restaurant">Restaurant</option>
-//               </select>
-
-//               <input
-//                 type="text"
-//                 name="owner-name"
-//                 placeholder="Owner Name"
-//                 value={ownerName}
-//                 onChange={(e) => setOwnerName(e.target.value)}
-//                 required
-//               />
-
-//               <input
-//                 type="text"
-//                 name="shop-address"
-//                 placeholder="Shop Address"
-//                 value={shopAddress}
-//                 onChange={(e) => setShopAddress(e.target.value)}
-//                 required
-//               />
-
-//               <button type="submit">Submit</button>
-//             </form>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Home;
-
-
-// import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { doc, collection, getDoc, setDoc } from "firebase/firestore";
-// import { auth, db } from "D:\\react\\busi_project\\src\\firebaseConfig";
-// import "./Home.css";
-// import logo from "../../assets/logo.png";
+import heroImage from "../../assets/hero.png";
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [shopCategory, setShopCategory] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const [shopAddress, setShopAddress] = useState("");
-  const [subcollection, setSubcollection] = useState(""); // To track the selected subcollection
+  const [subcollection, setSubcollection] = useState("");
   const navigate = useNavigate();
 
-  // Check if the user already has profile data in the selected subcollection
   const checkProfileData = async (subcollectionName) => {
     const user = auth.currentUser;
-
     if (user) {
-      const subcollectionRef = doc(
-        db,
-        "users",
-        user.email,
-        subcollectionName,
-        "profile" // Using "profile" as a placeholder document ID
-      );
-
+      const subcollectionRef = doc(db, "users", user.email, subcollectionName, "profile");
       try {
         const docSnap = await getDoc(subcollectionRef);
-
         if (docSnap.exists()) {
-          // User already has profile data in this subcollection, navigate to ProfilePage
           const userData = docSnap.data();
           navigate("/ProfilePage", { state: userData });
         } else {
-          // No profile data, show the popup
           setSubcollection(subcollectionName);
           setShowPopup(true);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-        setShowPopup(true); // In case of error, show the popup
+        setShowPopup(true);
       }
     } else {
       console.log("No user is logged in.");
     }
   };
 
-  // Handle form submission for the first-time profile data
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = auth.currentUser;
-
     if (user && subcollection) {
-      const subcollectionRef = doc(
-        db,
-        "users",
-        user.email,
-        subcollection,
-        "profile" // Using "profile" as the document ID within the subcollection
-      );
-
+      const subcollectionRef = doc(db, "users", user.email, subcollection, "profile");
       const data = { shopCategory, ownerName, shopAddress };
-
       try {
-        // Save the data to Firestore under the selected subcollection
         await setDoc(subcollectionRef, data);
         alert("Details saved successfully!");
-        navigate("/ProfilePage", { state: data }); // Navigate to the profile page
+        navigate("/ProfilePage", { state: data });
       } catch (error) {
         console.error("Error saving data:", error);
         alert("Failed to save details.");
@@ -250,91 +55,89 @@ const Home = () => {
     }
   };
 
-  const handleExistingBusinessClick = () => {
-    checkProfileData("existingBusinessUser");
-  };
-
-  // const handleNewBusinessClick = () => {
-  //   checkProfileData("newBusinessUser");
-  // };
-  const handleNewBusinessClick = () => {
-    navigate("/NewBusiness"); // Directly navigate to NewBusiness.jsx
-  };
-  
   return (
-    <div className="Ques1-container">
-      <nav className="containerhome">
-        <img src={logo} alt="Logo" className="logo" />
-        <ul>
-          <li>Home</li>
-          <li>Overview</li>
-          <li>Profile</li>
-        </ul>
-      </nav>
-      <div className="left-side"></div>
-      <div className="right-side">
-        <div className="right-content">
-          <h2>Select one of the below to let us know why you are here:</h2>
-        </div>
-        <div className="choice-btn-container">
-          <button
-            className="choice-btn"
-            onClick={handleNewBusinessClick} // Navigate to new business subcollection
+    <div className="homes" style={{ backgroundColor: "#2E2E2E", minHeight: "100vh" }}>
+      <AppBar position="static" sx={{ backgroundColor: "rgb(173, 216, 230)", height: "55px" }}>
+        <Toolbar>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            <img src={logo} alt="Logo" className="logo" />
+          </Typography>
+          <Button style={{ color: "black" }} color="inherit">About</Button>
+        </Toolbar>
+      </AppBar>
+
+      <main className="home-body" style={{ padding: "20px", color: "white", textAlign: "center", position: "relative" }}>
+        <img 
+          src={heroImage}
+          alt="Background Image" 
+          style={{ width: "100%", height: "auto", position: "absolute", top: 0, left: 0, zIndex: -1 }} 
+        />
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "absolute",
+            right: "10%",
+            bottom: "-1000%",
+            transform: "translateY(-50%)",
+            animation: "slideUp 1s ease-in-out",
+            width: "400px",
+          }}
+        >
+          <Button
+            variant="outlined"
+            onClick={() => navigate("/NewBusiness")}
+            sx={{
+              fontSize: "1.2rem",
+              color: "black",
+              borderColor: "blue",
+              borderWidth: "3px",
+              padding: "20px 24px",
+              borderRadius: "8px",
+              width: "120%",
+              backgroundColor: "white",
+              marginBottom: "15px",
+            }}
           >
-            I am a new Business owner and I am here looking for guidance
-          </button>
-          <button
-            className="choice-btn"
-            onClick={handleExistingBusinessClick} // Navigate to existing business subcollection
+            Find your Business
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() => checkProfileData("existingBusinessUser")}
+            sx={{
+              fontSize: "1.2rem",
+              color: "black",
+              borderColor: "blue",
+              borderWidth: "3px",
+              padding: "20px 24px",
+              borderRadius: "8px",
+              width: "120%",
+              backgroundColor: "white",
+            }}
           >
-            I am here to improve my existing business with different ideas
-          </button>
+            Improve your Business
+          </Button>
         </div>
-      </div>
+      </main>
 
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-modal">
-            <button className="close-btn" onClick={() => setShowPopup(false)}>
-              &times;
-            </button>
-
+            <button className="close-btn" onClick={() => setShowPopup(false)}>&times;</button>
             <form onSubmit={handleSubmit}>
               <h2>Shop Details</h2>
-
-              <select
-                name="shop-category"
-                value={shopCategory}
-                onChange={(e) => setShopCategory(e.target.value)}
-                required
-              >
-                <option value="" disabled>
-                  Shop Category
-                </option>
+              <select name="shop-category" value={shopCategory} onChange={(e) => setShopCategory(e.target.value)} required>
+                <option value="" disabled>Shop Category</option>
                 <option value="grocery">Grocery</option>
                 <option value="clothing">Clothing</option>
                 <option value="electronics">Electronics</option>
                 <option value="restaurant">Restaurant</option>
               </select>
-
-              <input
-                type="text"
-                name="owner-name"
-                placeholder="Owner Name"
-                value={ownerName}
-                onChange={(e) => setOwnerName(e.target.value)}
-                required
-              />
-
-              <input
-                type="text"
-                name="shop-address"
-                placeholder="Shop Address"
-                value={shopAddress}
-                onChange={(e) => setShopAddress(e.target.value)}
-                required
-              />
-
+              <input type="text" name="owner-name" placeholder="Owner Name" value={ownerName} onChange={(e) => setOwnerName(e.target.value)} required />
+              <input type="text" name="shop-address" placeholder="Shop Address" value={shopAddress} onChange={(e) => setShopAddress(e.target.value)} required />
               <button type="submit">Submit</button>
             </form>
           </div>
@@ -345,3 +148,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

@@ -1,11 +1,14 @@
 import React, { useState } from 'react'; // Removed useEffect since it's not used
 import { useNavigate } from 'react-router-dom';
 import './Signup.css';
-import logo from 'D:\\ashu_programs\\React\\Entrelocate\\src\\assets\\logo.png';
-import Signinwithgoogle from 'D:\\ashu_programs\\React\\Entrelocate\\src\\components\\Signinwithgoogle.jsx';
-import { auth, db } from 'D:\\ashu_programs\\React\\Entrelocate\\src\\components\\firebase\\firebase'; // Firebase Auth and Firestore
+import heroVideo from '../../../assets/hero1.mp4';
+import logo from 'C:\\Users\\balas\\Documents\\EntreLocate\\entreloc\\src\\assets\\logo.png';
+import Signinwithgoogle from 'C:\\Users\\balas\\Documents\\EntreLocate\\entreloc\\src\\components\\Signinwithgoogle.jsx';
+import { auth, db } from 'C:\\Users\\balas\\Documents\\EntreLocate\\entreloc\\src\\components\\firebase\\firebase'; // Firebase Auth and Firestore
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'; // Firebase Auth methods
 import { doc, setDoc } from 'firebase/firestore'; // Firestore methods
+import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+
 
 
 
@@ -78,45 +81,63 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
+      <video className='hero-video' autoPlay muted loop>
+        <source src={heroVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <div className="logo-signup">
         <img src={logo} alt="Logo" className="logo" />
       </div>
       <div className="form-container">
         <h2>Signup</h2>
         <form onSubmit={handleSubmit} className="signup-text">
-          <div className="signup-input">
-            <h3>Username:</h3>
-            <input
-              type="text"
-              placeholder="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-            {errors.username && <p className="error">{errors.username}</p>}
-          </div>
-          <div className="signup-input">
-            <h3>Password:</h3>
-            <input
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            {errors.password && <p className="error">{errors.password}</p>}
-          </div>
-          <div className="signup-input">
-            <h3>Email:</h3>
-            <input
-              type="email"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            {errors.email && <p className="error">{errors.email}</p>}
-          </div>
+        <div className="signup-input">
+  <h3>Username:</h3>
+  <div className="input-wrapper">
+    <FaUser className="input-icon" />
+    <input 
+      type="text"
+      placeholder="Username"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+      required
+    />
+  </div>
+  {errors.username && <p className="error">{errors.username}</p>}
+</div>
+
+<div className="signup-input">
+  <h3>Password:</h3>
+  <div className="input-wrapper">
+    <FaLock className="input-icon" />
+    <input
+      type="password"
+      placeholder="Password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+  </div>
+  {errors.password && <p className="error">{errors.password}</p>}
+</div>
+
+<div className="signup-input">
+  <h3>Email:</h3>
+  <div className="input-wrapper">
+    <FaEnvelope className="input-icon" />
+    <input
+      type="email"
+      placeholder="Email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      required
+    />
+  </div>
+  {errors.email && <p className="error">{errors.email}</p>}
+</div>
+
+
+
           <button type="submit" className="signup-submit">
             Sign Up
           </button>
